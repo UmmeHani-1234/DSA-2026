@@ -16,7 +16,7 @@ int main() {
         }
     }
 
-    cout << "Duplicate present: " << duplicateFound;
+    cout << "Duplicate present : " << duplicateFound;
 
     return 0;
 }

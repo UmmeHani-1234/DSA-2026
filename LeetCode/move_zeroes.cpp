@@ -13,7 +13,7 @@ int main() {
                 arr[j] = arr[j+1];
             }
             arr[size - 1] = 0;
-            i++;
+            
         }
             else {
                 i++;

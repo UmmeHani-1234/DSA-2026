@@ -25,9 +25,8 @@ int main() {
 
         ans += temp;
 
-        i++; // Skip the space
+        i++; 
     }
-
     cout << ans;
 
     return 0;

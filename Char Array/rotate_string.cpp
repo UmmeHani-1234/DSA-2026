@@ -23,7 +23,12 @@ int main() {
         }
     }
 
-    cout << ans;
+    if (ans == true){
+        cout << "true" << endl;
+    }
+    else{
+        cout << "false" << endl;
+    }
 
     return 0;
 }

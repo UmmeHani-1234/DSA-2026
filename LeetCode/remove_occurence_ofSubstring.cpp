@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     string str = "abcccdccicbsci";
     string sub = "ccc";
-
+    cout<< "the original string is: "<<str<<endl;
     int i = 0;
     string temp;
 
@@ -44,8 +44,8 @@ int main() {
             i++;
         }
     }
-
-    cout << str;
+    
+    cout << "the string after removing the occurence is: "<<str;
 
     return 0;
 }

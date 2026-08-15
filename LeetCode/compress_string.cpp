@@ -1,42 +1,36 @@
-class Solution {
-public:
-    int compress(vector<char>& chars) {
+#include <iostream>
+#include <string>
+using namespace std;
 
-        string s1(chars.begin(), chars.end());
+int main() {
 
-        int i = 0;
+    string s1 = "aaaabbbbccddddddeeeeeeee";
 
-        while (i < s1.length()) {
+    int i = 0;
 
-            char current = s1[i];
-            int count = 1;
-            int j = i + 1;
+    while (i < s1.length()) {
 
-            // Count duplicates
-            while (j < s1.length() && s1[j] == current) {
-                count++;
-                j++;
-            }
+        char current = s1[i];
+        int count = 1;
+        int j = i + 1;
 
-            // Remove duplicates
-            s1.erase(i + 1, count - 1);
-
-            // Insert count
-            if (count > 1) {
-                s1.insert(i + 1, to_string(count));
-            }
-
-            // Move to next character
-            i = i + 1 + (count > 1 ? to_string(count).length() : 0);
+        // Count how many times current is repeated
+        while (j < s1.length() && s1[j] == current) {
+            count++;
+            j++;
         }
 
-        // Put compressed string back into chars
-        chars.clear();
+        // Remove duplicates
+        s1.erase(i + 1, count - 1);
 
-        for (char c : s1) {
-            chars.push_back(c);
-        }
+        // Insert count
+        s1.insert(i + 1, to_string(count));
 
-        return chars.size();
+        // Move to next character
+        i = i + 1 + to_string(count).length();
     }
-};
+
+    cout << s1;
+
+    return 0;
+}

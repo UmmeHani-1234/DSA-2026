@@ -1,21 +1,37 @@
-class Solution {
-public:
-    string removeDuplicates(string s) {
+#include <iostream>
+#include <string>
+using namespace std;
 
-        int i = 0;
-        int size = s.length();
-        while (i < size - 1) {
+string removeDuplicates(string s) {
 
-            if (s[i] == s[i + 1]) {
-                s.erase(i, 2);
+    int i = 0;
 
-                if (i > 0)
-                    i--;
-            }
-            else {
-                i++;
-            }
+    while (i + 1 < s.length()) {
+
+        if (s[i] == s[i + 1]) {
+            s.erase(i, 2);
+
+            if (i > 0)
+                i--;
         }
-        return s;
+        else {
+            i++;
+        }
     }
-};
+
+    return s;
+}
+
+int main() {
+
+    string s;
+
+    cout << "Enter string: ";
+    cin >> s;
+
+    string ans = removeDuplicates(s);
+
+    cout << "After removing duplicates: " << ans << endl;
+
+    return 0;
+}

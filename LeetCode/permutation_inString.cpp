@@ -1,50 +1,79 @@
 #include <iostream>
 #include <string>
-#include <vector>
 using namespace std;
 
-class Solution {
-public:
-    bool checkInclusion(string s1, string s2) {
+bool permutationCheck(int count1[], int count2[]) {
 
-        int count = s1.length();
-
-        if (count > s2.length())
+    for (int i = 0; i < 26; i++) {
+        if (count1[i] != count2[i]) {
             return false;
+        }
+    }
 
-        for (int i = 0; i <= s2.length() - count; i++) {
+    return true;
+}
 
-            vector<int> arr(count, 0);
-            int k = i;
+int main() {
 
-            while (k < i + count) {
+    string s1 = "abcbbbbabb";
+    string s2 = "ab";
+    bool ans = false;
+    int windowSize = s1.length();
 
-                int j = 0;
+    int count1[26] = {0};
+    int count2[26] = {0};
 
-                while (j < count) {
+    // Count characters of s1
+    for (int i = 0; i < s1.length(); i++) {
 
-                    if (s2[k] == s1[j] && arr[j] == 0) {
-                        arr[j] = 1;
-                        break;
-                    }
+        int index = s1[i] - 'a';
+        count1[index]++;
+    }
 
-                    j++;
-                }
+    // Check if s1 is bigger than s2
+    if (s1.length() > s2.length()) {
+        cout << false;
+        return 0;
+    }
 
-                k++;
-            }
+    // First window of s2
+    for (int i = 0; i < windowSize; i++) {
 
-            int x;
+        int index = s2[i] - 'a';
+        count2[index]++;
+    }
 
-            for (x = 0; x < count; x++) {
-                if (arr[x] != 1)
-                    break;
-            }
+    // Check first window
+    if (permutationCheck(count1, count2)) {
+        cout << true;
+        return 0;
+    }
 
-            if (x == count)
-                return true;
+    // Sliding window
+    int i = windowSize;
+
+    while (i < s2.length()) {
+
+        // Character leaving the window
+        char oldChar = s2[i - windowSize];
+
+        // Character entering the window
+        char newChar = s2[i];
+
+        int oldIndex = oldChar - 'a';
+        int newIndex = newChar - 'a';
+
+        count2[oldIndex]--;
+        count2[newIndex]++;
+
+        if (permutationCheck(count1, count2)) {
+            bool ans = true;
+            return ans;
         }
 
-        return false;
+        i++;
     }
-};
+
+    cout << ans;
+    return 0;
+}

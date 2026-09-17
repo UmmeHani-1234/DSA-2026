@@ -9,6 +9,6 @@ int main() {
     cout <<"this will print the first element of ch" <<ch << endl;
     char *ptr = &ch[0];
     cout << *ptr <<endl;
-    cout <<ptr <<endl;
+    cout <<ptr << endl;
     return 0;
 }

@@ -26,6 +26,5 @@ int main() {
     cout << ptr2 << endl;     // address of ptr
     cout << *ptr2 << endl;    // address of i
     cout << **ptr2 << endl;   // value of i
-
     return 0;
 }

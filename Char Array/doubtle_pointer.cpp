@@ -10,7 +10,6 @@ int main() {
     int i = 5;
     int *ptr = &i;
     int **ptr2 = &ptr;
-
     cout << "before" << endl;
     cout << ptr << endl;      // address of i
     cout << *ptr << endl;     // value of i

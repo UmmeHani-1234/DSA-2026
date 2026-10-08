@@ -2,62 +2,43 @@
 #include <vector>
 using namespace std;
 
-void merge(vector<int>& arr, int s, int e) {
+   void merge(vector<int>& arr, int s, int e) {
 
     int mid = (e + s) / 2;
 
-    vector<int> arr1;
-    vector<int> arr2;
+    vector<int> temp;
+
+    int i = s;       // left half
+    int j = mid + 1; // right half
 
 
-    int n1 = mid - s + 1;
+    while (i <= mid && j <= e) {
 
-    for (int i = 0; i < n1; i++) {
-        arr1.push_back(arr[s + i]);
-    }
-
-
-    int n2 = e - mid;
-
-    for (int i = 0; i < n2; i++) {
-        arr2.push_back(arr[mid + 1 + i]);
-    }
-
-    // Merge
-    int i = 0;
-    int j = 0;
-    int k = s;
-
-    while (i < n1 && j < n2) {
-
-        if (arr1[i] <= arr2[j]) {
-            arr[k] = arr1[i];
+        if (arr[i] <= arr[j]) {
+            temp.push_back(arr[i]);
             i++;
         }
         else {
-            arr[k] = arr2[j];
+            temp.push_back(arr[j]);
             j++;
         }
-
-        k++;
     }
 
-
-    while (i < n1) {
-        arr[k] = arr1[i];
+    while (i <= mid) {
+        temp.push_back(arr[i]);
         i++;
-        k++;
     }
 
-
-    while (j < n2) {
-        arr[k] = arr2[j];
+    while (j <= e) {
+        temp.push_back(arr[j]);
         j++;
-        k++;
+    }
+
+    for (int x = 0; x < temp.size(); x++) {
+        arr[s + x] = temp[x];
     }
 }
-
-
+   
 void sort(vector<int>& arr, int s, int e) {
 
     if (s >= e) {

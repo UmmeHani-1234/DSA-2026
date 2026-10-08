@@ -87,11 +87,11 @@ void mergeSort(vector<int>& arr, int n) {
 int main() {
 
     vector<int> arr = {8, 2, 10, 4, 5, 7};
+    int n = arr.size();
+    mergeSort(arr, n);
 
-    mergeSort(arr, arr.size());
-
-    for (int i : arr) {
-        cout << i << " ";
+    for (int i = n; i > 0; i--) {
+        cout << arr[i] << " ";
     }
 
     return 0;
